@@ -3,6 +3,10 @@
 > **PAVR: Perturbation-Aware Variant Representations from Genomic Foundation Models**  
 > Full manuscript: [`data/Method_PAVR.pdf`](data/Method_PAVR.pdf)
 
+<p align="center">
+  <img src="data/PAVR.png" alt="PAVR overview" width="90%"/>
+</p>
+
 Variant effect prediction asks whether a small DNA change can perturb molecular function and alter phenotype. Genomic foundation models (GFMs) provide strong sequence representations, but effects span **local allelic disruption**, **proximal regulatory response**, and **distal functional consequences**. Collapsing these into one global embedding can wash out variant-specific signal and entangle distinct effect scales.
 
 **PAVR** (*Perturbation-Aware Variant Representation*) repurposes **frozen** GFMs by comparing token-level hidden states of paired reference and alternative sequences. It builds multi-view ref–alt token fields and uses an explicit **dual-branch** design with soft complementary receptive fields:
@@ -27,6 +31,7 @@ PAVR/
 │       └── model.py       # PAVR adapter (paper default)
 ├── data/
 │   ├── Method_PAVR.pdf              # paper manuscript
+│   ├── PAVR.png                     # method overview figure
 │   ├── clinvar_pathogenicity.csv
 │   ├── dataset_summary.json
 │   └── evo2_7b_window_gastric_1k.pt   # ~2 GB frozen Evo2-7B cache
@@ -41,6 +46,9 @@ PAVR/
 
 ## Demo data
 
+Test data (including the cached feature tensors) is hosted on Hugging Face:  
+[https://huggingface.co/datasets/xw97/PAVR_test_data](https://huggingface.co/datasets/xw97/PAVR_test_data)
+
 | File | Content |
 |------|---------|
 | `data/clinvar_pathogenicity.csv` | 2000 gastric ClinVar variants, 1 kb windows |
@@ -48,7 +56,7 @@ PAVR/
 
 Splits: train 1400 / val 300 / test 300.
 
-> The `.pt` cache is ~2 GB and is gitignored by default. Use Git LFS, a release asset, or an external link.
+> The `.pt` cache is ~2 GB and is gitignored by default. Download it from the Hugging Face dataset above, or use Git LFS / a release asset.
 
 ---
 
@@ -94,19 +102,6 @@ PYTHONPATH=script python -c "from pavr import PAVRClassifier, PAVRConfig; print(
 
 ---
 
-## Method (paper default)
+## License & contact
 
-1. **BackboneNorm** — map GFM tokens to a shared dim  
-2. **MultiViewPerturbation** — ref/alt, Δ, \|Δ\|, product, distance & variant-type embeddings  
-3. **SoftComplementaryWindow** — decay-MLP radius \(r\); Allele uses \(w(d;r)\), Context uses the complement  
-4. **AlleleBranch / ContextBranch** — local DW-conv attention vs BiGRU + attention  
-5. **Probe** — \([z_{\mathrm{allele}},\, z_{\mathrm{context}},\, |z_a-z_c|]\) → MLP  
-6. **Loss** — CE (logit adjustment) + attention exclusivity (\(\lambda_{\mathrm{excl}}=0.05\))
-
-The GFM backbone stays frozen; only PAVR is trained.
-
----
-
-## Citation
-
-Please cite [`data/Method_PAVR.pdf`](data/Method_PAVR.pdf) (*PAVR: Perturbation-Aware Variant Representations from Genomic Foundation Models*) and the corresponding GFM (e.g. Evo2).
+No license file is included in this repository. Please confirm licensing with the project owner before reuse or redistribution.

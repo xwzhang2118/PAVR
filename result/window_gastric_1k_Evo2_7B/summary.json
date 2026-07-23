@@ -1,0 +1,102 @@
+{
+  "method": "PAVR",
+  "foundation_model": "Evo2_7B",
+  "adapter": "pavr (devrep_clw)",
+  "task": "window_gastric_1k",
+  "dataset": "ClinVar gastric_cancer, n=2000, seq_len=1000",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "metrics": {
+    "type": "classification",
+    "per_seed": [
+      {
+        "seed": 0,
+        "auroc_macro": 0.8312590558018615,
+        "f1_macro": 0.49314152829854985,
+        "accuracy": 0.72,
+        "balanced_accuracy": 0.49667266057165965
+      },
+      {
+        "seed": 1,
+        "auroc_macro": 0.8662842869158452,
+        "f1_macro": 0.557659606983351,
+        "accuracy": 0.7033333333333334,
+        "balanced_accuracy": 0.6238887805653046
+      },
+      {
+        "seed": 2,
+        "auroc_macro": 0.8728707088222674,
+        "f1_macro": 0.556323358632081,
+        "accuracy": 0.7066666666666667,
+        "balanced_accuracy": 0.6275573392839089
+      },
+      {
+        "seed": 3,
+        "auroc_macro": 0.8669084746361977,
+        "f1_macro": 0.4564803253654802,
+        "accuracy": 0.6333333333333333,
+        "balanced_accuracy": 0.4882604315611595
+      },
+      {
+        "seed": 4,
+        "auroc_macro": 0.8730028073155913,
+        "f1_macro": 0.5323961595750721,
+        "accuracy": 0.6833333333333333,
+        "balanced_accuracy": 0.5883080939382122
+      }
+    ],
+    "auroc_macro": {
+      "mean": 0.8620650666983526,
+      "std": 0.017511901656951195
+    },
+    "f1_macro": {
+      "mean": 0.5192001957709069,
+      "std": 0.04371563017518554
+    },
+    "accuracy": {
+      "mean": 0.6893333333333332,
+      "std": 0.033944398981602585
+    },
+    "balanced_accuracy": {
+      "mean": 0.564937461184049,
+      "std": 0.06797452379347874
+    }
+  },
+  "head": {
+    "projection_dim": 128,
+    "common_dim": 256,
+    "hidden_dim": 128,
+    "macro_type": "attention",
+    "context_encoder": "gru",
+    "window_mode": "learnable",
+    "radius_temperature": 2.0,
+    "local_radius": 32,
+    "contrastive_weight": 0.0,
+    "imbalance_strategy": "logit_adjustment",
+    "balanced_sampler": false,
+    "focal_gamma": 2.0,
+    "class_balanced_beta": 0.999,
+    "logit_adjustment_tau": 1.0,
+    "monitor_metric": "auto",
+    "effective_contrastive_weight": 0.0,
+    "loss_config": {
+      "contrastive_weight": 0.0,
+      "diversity_weight": 0.0,
+      "attention_entropy_weight": 0.0,
+      "allele_local_weight": 0.0,
+      "window_inside_weight": 0.0,
+      "window_outside_weight": 0.0,
+      "attention_excl_weight": 0.05,
+      "branch_aux_weight": 0.0,
+      "allele_aux_weight": 0.0,
+      "context_aux_weight": 0.0,
+      "allele_fusion_dropout": 0.0,
+      "context_fusion_dropout": 0.0
+    }
+  }
+}

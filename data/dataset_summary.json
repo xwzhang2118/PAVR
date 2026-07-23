@@ -1,0 +1,35 @@
+{
+  "dataset": "gastric_cancer",
+  "task": "gastric_cancer_clinvar_pathogenicity",
+  "description": "ClinVar gastric-cancer pathogenicity subset, n=2000 variants, centered 1 kb ref/alt windows.",
+  "seq_len": 1000,
+  "n": 2000,
+  "splits": {
+    "train": 1400,
+    "val": 300,
+    "test": 300
+  },
+  "label_counts": {
+    "Likely_benign": 1053,
+    "Benign": 67,
+    "Likely_pathogenic": 197,
+    "Pathogenic": 683
+  },
+  "context_counts": {
+    "single_nucleotide_variant": 1360,
+    "Deletion": 349,
+    "Duplication": 165,
+    "Indel": 50,
+    "Microsatellite": 41,
+    "Insertion": 35
+  },
+  "ref_len_min": 1000,
+  "ref_len_max": 1000,
+  "alt_len_min": 1000,
+  "alt_len_max": 1000,
+  "seed": 20260720,
+  "files": {
+    "csv": "clinvar_pathogenicity.csv",
+    "evo2_features": "evo2_7b_window_gastric_1k.pt"
+  }
+}

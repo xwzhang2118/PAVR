@@ -1,0 +1,19 @@
+# Ignore large binary caches (use Git LFS or external download)
+data/*.pt
+data/**/*.pt
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Optional local reruns
+result/rerun_*/
+*.log

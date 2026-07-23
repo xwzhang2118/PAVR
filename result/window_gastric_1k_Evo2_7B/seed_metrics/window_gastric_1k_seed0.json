@@ -1,0 +1,8 @@
+{
+  "task": "window_gastric_1k",
+  "seed": 0,
+  "auroc_macro": 0.8312590558018615,
+  "f1_macro": 0.49314152829854985,
+  "accuracy": 0.72,
+  "balanced_accuracy": 0.49667266057165965
+}

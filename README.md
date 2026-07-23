@@ -1,7 +1,6 @@
 # PAVR
 
-> **PAVR: Perturbation-Aware Variant Representations from Genomic Foundation Models**  
-> Full manuscript: [`data/Method_PAVR.pdf`](data/Method_PAVR.pdf)
+> **PAVR: Perturbation-Aware Variant Representations from Genomic Foundation Models**
 
 <p align="center">
   <img src="data/PAVR.png" alt="PAVR overview" width="90%"/>
@@ -30,7 +29,6 @@ PAVR/
 │   └── pavr/
 │       └── model.py       # PAVR adapter (paper default)
 ├── data/
-│   ├── Method_PAVR.pdf              # paper manuscript
 │   ├── PAVR.png                     # method overview figure
 │   ├── clinvar_pathogenicity.csv
 │   ├── dataset_summary.json

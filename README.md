@@ -11,7 +11,7 @@ Variant effect prediction asks whether a small DNA change can perturb molecular 
 **PAVR** (*Perturbation-Aware Variant Representation*) repurposes **frozen** GFMs by comparing token-level hidden states of paired reference and alternative sequences. It builds multi-view ref–alt token fields and uses an explicit **dual-branch** design with soft complementary receptive fields:
 
 - **Allele branch** — local allelic perturbation at the edited bases  
-- **Context branch** — context-mediated / regulatory response (BiGRU)
+- **Context branch** — context-mediated / regulatory response
 
 The two scales stay disentangled before fusion, improving predictive performance and mechanistic interpretability over conventional global differential embeddings (validated on ClinVar, sQTL, and Gene-KO across six GFMs).
 
